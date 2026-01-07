@@ -1,0 +1,67 @@
+1. Dependencies 
+    * npm i -D prettier
+    * npm i -D eslint-config-prettier prettier-plugin-tailwindcss
+
+2. package-json.
+    "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\" \"*.{js,ts,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\" \"*.{js,ts,json,md}\"",
+    "check": "npm run lint && npm run type-check && npm run format:check"
+  },
+
+3. make workflow (in root of repo)
+    mkdir -p .github/workflows
+    touch .github/workflows/ci-finished.yml
+
+4. Add content
+
+name: CI (finished)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./finished
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: ./finished/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run type check
+        run: npm run type-check
+
+      - name: Run prettier check
+        run: npm run format:check
+
+4. Test
+
+    cd finished
+    npm run lint
+    npm run type-check
+    npm run format:check
