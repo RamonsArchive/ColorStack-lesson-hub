@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import Ramon from "./ramon";
 
 const InputOutput = () => {
   const [message, setMessage] = useState<string>("");
@@ -57,6 +58,9 @@ const InputOutput = () => {
         >
           Clear
         </button>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <Ramon />
       </div>
     </section>
   );
