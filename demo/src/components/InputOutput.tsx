@@ -25,8 +25,9 @@ const InputOutput = () => {
         {history.map((item, index) => (
           <div
             key={index}
-            className="flex w-full gap-1 bg-slate-900 p-2 rounded-xl"
+            className="flex flex-row w-full gap-1 bg-slate-900 p-2 rounded-xl"
           >
+            <p className="text-sm text-slate-100">{index + 1}.</p>
             <p className="text-sm text-slate-100">{item}</p>
           </div>
         ))}
