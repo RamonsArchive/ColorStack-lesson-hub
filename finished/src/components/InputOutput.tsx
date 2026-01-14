@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import Ramon from "./Ramon";
 
 const InputOutput = () => {
   const [message, setMessage] = useState<string>("");
@@ -21,7 +20,7 @@ const InputOutput = () => {
   };
 
   return (
-    <section className="flex flex-col w-full gap-5 overflow-y-auto">
+    <section className="flex flex-col w-full gap-5">
       <div className="flex flex-col w-full max-h-[200px] min-h-[200px] h-full bg-slate-900 p-2 rounded-xl overflow-y-auto">
         {/* add numbered lines to the history */}
         {history.map((item, index) => (
@@ -59,9 +58,6 @@ const InputOutput = () => {
         >
           Clear
         </button>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-        <Ramon />
       </div>
     </section>
   );

@@ -10,6 +10,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-accent-100: #e6f2ff;
+  --color-accent-200: #b3d9ff;
+  --color-accent-300: #80c2ff;
+  --color-accent-400: #4daaff;
+  --color-accent-500: #007bff;
+  --color-accent-600: #0056b3;
+  --color-accent-700: #003d80;
+  --color-accent-800: #002650;
+  --color-accent-900: #001325;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,4 +37,8 @@ body {
 
 @utility flex-center {
   @apply flex items-center justify-center;
+}
+
+@utility main-container {
+  @apply flex min-h-screen w-full font-sans bg-slate-950;
 }
